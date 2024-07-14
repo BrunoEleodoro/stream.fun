@@ -1,20 +1,19 @@
 "use client";
-import * as React from 'react';
 import { ThemeProvider } from "@/components/theme-provider";
-import { Inter as FontSans } from "next/font/google";
-import { client } from "@/services/apollo";
-import { ApolloProvider } from "@apollo/client";
 import { cn } from "@/lib/utils";
-import "./globals.css";
-import Script from "next/script";
-import { WagmiProvider, createConfig, http } from "wagmi";
-import { mainnet, polygon, sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
+import { Anonymous_Pro } from "next/font/google";
+import Script from "next/script";
+import * as React from "react";
+import { WagmiProvider, createConfig, http } from "wagmi";
+import { mainnet, polygon, sepolia } from "wagmi/chains";
+import "./globals.css";
 
-const fontSans = FontSans({
+const fontAnonymous = Anonymous_Pro({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-anonymous-pro",
 });
 
 export default function RootLayout({
@@ -83,9 +82,7 @@ export default function RootLayout({
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
           <ConnectKitProvider>
-            <body
-              className={cn("font-sans antialiased", fontSans.variable)}
-            >
+            <body className={cn("antialiased", fontAnonymous.className)}>
               {/* <Navbar /> */}
               {children}
             </body>
