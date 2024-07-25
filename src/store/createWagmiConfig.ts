@@ -1,8 +1,18 @@
 import { createConfig, http } from 'wagmi';
-import { mainnet, polygon, base, baseSepolia } from 'wagmi/chains';
+import {
+  mainnet,
+  polygon,
+  base,
+  baseSepolia,
+  optimism,
+  arbitrum,
+  avalanche,
+  sepolia,
+} from 'wagmi/chains';
 import { coinbaseWallet, injected } from 'wagmi/connectors';
 import { createClient } from 'viem';
 import { getDefaultConfig } from 'connectkit';
+import { pureSuperTokenFactories, supportedChains } from '@/constants';
 
 export function createWagmiConfig(rpcUrl: string, projectId?: string) {
   // Keep this till we fully deprecated RK inside the template
@@ -17,7 +27,8 @@ export function createWagmiConfig(rpcUrl: string, projectId?: string) {
     getDefaultConfig({
       ssr: true,
       // Your dApps chains
-      chains: [polygon, base, baseSepolia],
+      // chains: [polygon, base, baseSepolia],
+      chains: [base, polygon, optimism, arbitrum, avalanche, sepolia],
       client({ chain }) {
         return createClient({ chain, transport: http() });
       },

@@ -17,6 +17,24 @@ import {
   optimismSepolia,
 } from 'viem/chains';
 
+export const blockExplorers: Record<number, string> = {
+  [mainnet.id]: 'https://etherscan.io',
+  [base.id]: 'https://basescan.org',
+  [polygon.id]: 'https://polygonscan.com',
+  [optimism.id]: 'https://optimistic.etherscan.io',
+  [arbitrum.id]: 'https://arbiscan.io',
+  [sepolia.id]: 'https://sepolia.etherscan.io',
+  [optimismSepolia.id]: 'https://sepolia.optimism.io',
+  [avalancheFuji.id]: 'https://testnet.snowtrace.io',
+  [bsc.id]: 'https://bscscan.com',
+  [celo.id]: 'https://celoscan.io',
+  [degen.id]: 'https://degen.xyz',
+  [scroll.id]: 'https://scrollscan.io',
+  [scrollSepolia.id]: 'https://sepolia.scrollscan.io',
+  [gnosis.id]: 'https://gnosisscan.io',
+  [avalanche.id]: 'https://snowtrace.io',
+};
+
 export const pureSuperTokenFactories: Record<number, string> = {
   [mainnet.id]: '',
   [base.id]: '0xE9F54484ed713D8B0F7719958908dF1E0fb94Bbb',
@@ -65,9 +83,9 @@ export const supportedChains = Object.entries(pureSuperTokenFactories)
         return optimism;
       case arbitrum.id:
         return arbitrum;
-      case avalanche.id: 
+      case avalanche.id:
         return avalanche;
-      case sepolia.id: 
+      case sepolia.id:
         return sepolia;
       default:
         return null;
