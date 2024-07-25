@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { baseSepolia } from 'viem/chains';
+import { base, baseSepolia } from 'viem/chains';
 import { WagmiProvider } from 'wagmi';
 import { createWagmiConfig } from '@/store/createWagmiConfig';
 import { ConnectKitProvider } from 'connectkit';
@@ -21,7 +21,7 @@ function OnchainProviders({ children }: Props) {
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <ConnectKitProvider>
-          <OnchainKitProvider chain={baseSepolia}>{children}</OnchainKitProvider>
+          <OnchainKitProvider chain={base}>{children}</OnchainKitProvider>
         </ConnectKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
