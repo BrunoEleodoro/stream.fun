@@ -15,11 +15,13 @@ export default function useCreatePureSuperToken({
   name,
   symbol,
   address,
+  initialSupply,
   chainId,
 }: {
   name: string;
   symbol: string;
   address: string;
+  initialSupply: string;
   chainId: number;
 }) {
   const [transactionState, setTransactionState] = useState<TransactionStates | null>(null);
@@ -46,7 +48,7 @@ export default function useCreatePureSuperToken({
         abi: PureSuperTokenDeployerABI,
         address: pureSuperTokenFactories[chainId] as `0x`,
         functionName: 'deploySuperToken',
-        args: [name, symbol, address, parseEther('1000000')],
+        args: [name, symbol, address, parseEther(initialSupply)],
       },
       {
         onError(error) {

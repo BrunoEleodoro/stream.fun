@@ -15,11 +15,13 @@ const TokenForm = () => {
     symbol: string;
     icon: any;
     description: string;
+    initialSupply: string;
   }>({
     name: '',
     symbol: '',
     icon: '',
     description: '',
+    initialSupply: '10000000',
   });
   const [iconPreview, setIconPreview] = useState<string | null>(null);
   const [hasERC20, setHasERC20] = useState(false);
@@ -52,6 +54,7 @@ const TokenForm = () => {
     symbol: form.symbol,
     address: address ?? '',
     chainId,
+    initialSupply: form.initialSupply,
   });
 
   const isPending =
@@ -124,15 +127,21 @@ const TokenForm = () => {
 
             {hasERC20 ? (
               <>
-                <Input
-                  type="text"
-                  name="erc20Address"
-                  placeholder="ERC20 Token Address"
-                  className="h-[2.5rem] w-full rounded-xl"
-                  value={erc20Address}
-                  onChange={(e) => setErc20Address(e.target.value)}
-                  disabled={erc20WrapperDisabled}
-                />
+                <div className="w-full">
+                  <label htmlFor="erc20Address" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    ERC20 Token Address
+                  </label>
+                  <Input
+                    type="text"
+                    id="erc20Address"
+                    name="erc20Address"
+                    placeholder="Enter ERC20 Token Address"
+                    className="h-[2.5rem] w-full rounded-xl"
+                    value={erc20Address}
+                    onChange={(e) => setErc20Address(e.target.value)}
+                    disabled={erc20WrapperDisabled}
+                  />
+                </div>
                 {erc20WrapperErrors ? (
                   <div className="text-red-500">
                     <p>Error: {erc20WrapperErrors.message}</p>
@@ -145,24 +154,51 @@ const TokenForm = () => {
               </>
             ) : (
               <>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Token Name"
-                  className="h-[2.5rem] w-full rounded-xl"
-                  value={form.name}
-                  onChange={handleChange}
-                  disabled={pureSuperTokenDisabled}
-                />
-                <Input
-                  type="text"
-                  name="symbol"
-                  placeholder="Token Symbol"
-                  className="h-[2.5rem] w-full rounded-xl"
-                  value={form.symbol}
-                  onChange={handleChange}
-                  disabled={pureSuperTokenDisabled}
-                />
+                <div className="w-full">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Token Name
+                  </label>
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter Token Name"
+                    className="h-[2.5rem] w-full rounded-xl"
+                    value={form.name}
+                    onChange={handleChange}
+                    disabled={pureSuperTokenDisabled}
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="symbol" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Token Symbol
+                  </label>
+                  <Input
+                    type="text"
+                    id="symbol"
+                    name="symbol"
+                    placeholder="Enter Token Symbol"
+                    className="h-[2.5rem] w-full rounded-xl"
+                    value={form.symbol}
+                    onChange={handleChange}
+                    disabled={pureSuperTokenDisabled}
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="initialSupply" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Initial Supply
+                  </label>
+                  <Input
+                    type="text"
+                    id="initialSupply"
+                    name="initialSupply"
+                    placeholder="Enter Initial Supply"
+                    className="h-[2.5rem] w-full rounded-xl"
+                    value={form.initialSupply}
+                    onChange={handleChange}
+                    disabled={pureSuperTokenDisabled}
+                  />
+                </div>
                 {pureSuperTokenErrors && (
                   <div className="text-red-500">
                     <p>Error: {pureSuperTokenErrors.message}</p>
