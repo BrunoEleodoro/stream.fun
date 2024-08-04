@@ -67,7 +67,7 @@ export const wrappedSuperTokenFactories: Record<number, string> = {
   [scroll.id]: '',
   [scrollSepolia.id]: '',
   [avalancheFuji.id]: '0xA25dbEa94C5824892006b30a629213E7Bf238624',
-  [sepolia.id]: '',
+  [sepolia.id]: '0x254C2e152E8602839D288A7bccdf3d0974597193',
   [optimismSepolia.id]: '',
 };
 
